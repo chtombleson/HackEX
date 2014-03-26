@@ -129,11 +129,6 @@ class Autoloader {
         $namespace = substr($className, 0, strrpos($className, $this->separator));
         $class = substr($className, (strrpos($className, $this->separator) + 1));
 
-        echo "Namespace: " . $namespace . "\n";
-        echo "Class: " . $class . "\n";
-
-        print_r($this->namespaces);
-
         if (!empty($namespace) && !empty($class)) {
             if (!empty($this->namespaces[$namespace])) {
                 require_once(realpath($this->namespaces[$namespace]) . DIRECTORY_SEPARATOR . $class . $this->extension);
