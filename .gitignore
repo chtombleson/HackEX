@@ -1,2 +1,4 @@
 *.swp
 .hhconfig
+composer.lock
+/vendor/

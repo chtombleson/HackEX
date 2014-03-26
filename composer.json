@@ -1,0 +1,15 @@
+{
+    "name": "chtombleson/hack-ex",
+    "description": "A framework written in Hack",
+    "require": {
+        "mustangostang/spyc": "0.5.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christopher Tombleson",
+            "email": "chris@cribznetwork.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
