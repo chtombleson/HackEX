@@ -22,16 +22,16 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 */
 /**
-* HackEX\Config\JSON
+* HackEX\Config\YAML
 *
 * Example useage:
-*   $config = new HackEX\Config\JSON('config.json');
+*   $config = new HackEX\Config\YAML('config.yml');
 *   $config->readConfig();
 *   $test = $config->get('test');
 */
 namespace HackEX\Config;
 
-class JSON implements ConfigInterface {
+class YAML implements ConfigInterface {
     /**
     * String path to file
     */
@@ -45,44 +45,37 @@ class JSON implements ConfigInterface {
     /**
     * __construct
     *
-    * Create a new instance of HackEX\Config\JSON
-    * @param string $file   Path to json to load
+    * Create a new instance of HackEX\Config\YAML
+    * @param string $file   Path to yaml to load
     */
     public function __construct(\string $file) {
         if (file_exists($file)) {
             $this->file = $file;
         } else {
-            throw new JSONException("JSON file: " . $file . " does not exist.");
+            throw new YAMLException("Yaml file: " . $file . " does not exist.");
         }
     }
 
     /**
     * readConfig
     *
-    * Read the json file into a array
+    * Read the yaml file into a array
     * @return bool based on success
     */
     public function readConfig(): bool {
-        $json = file_get_contents($this->file);
-
-        if ($json === false) {
-            return false;
-        }
-
-        $this->data = json_decode($json);
-        return true;
+        $this->data = \Spyc::YAMLLoad($this->file);
     }
 
     /**
     * writeConfig
     *
-    * Write the array back out to the json file
+    * Write the array back out to the yaml file
     * @return bool based on success
     */
     public function writeConfig(): bool {
-        $json = json_encode($this->data);
+        $yaml = \Spyc::YAMLDump($this->data);
 
-        if (file_put_contents($this->file, $json) === false) {
+        if (file_put_contents($this->file, $yaml) === false) {
             return false;
         }
 
@@ -119,7 +112,7 @@ class JSON implements ConfigInterface {
 }
 
 /**
-* JSONException
+* YAMLException
 * @author Christopher Tombleson
 */
-class JSONException extends \Exception {}
+class YAMLException extends \Exception {}
