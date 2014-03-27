@@ -2,6 +2,8 @@
 
 Framework for Hack http://hacklang.org/
 
+Hack requires the facebooks hiphop vm http://hhvm.com/
+
 ## Seting up framework
 
 You can do this in 2 ways via composer of directly from git.
