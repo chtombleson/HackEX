@@ -26,14 +26,14 @@
 * HackEX\Autoloader PHP autoloader ported to Hack
 *
 * Example useage:
-*   $autoloader = new Autoloader();
+*   $autoloader = new HackEX\Autloader\Autoloader();
 *   $autoloader->addNamespace('Test\Core', __DIR__ . '/Test/Core');
 *   $autoloader->register();
 *   $config = new Test\Core\Config();
 *
 * @author Christopher Tombleson
 */
-namespace HackEX;
+namespace HackEX\Autoloader;
 
 class Autoloader {
     /**

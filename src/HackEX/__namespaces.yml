@@ -1,0 +1,7 @@
+# Namespace yaml file
+# Maps namespaces to paths
+# Use __DIR__ in path to indicate this directory
+
+namespaces:
+    HackEX\Autoloader: __DIR__/Autoloader
+    HackEX\Config: __DIR__/Config
