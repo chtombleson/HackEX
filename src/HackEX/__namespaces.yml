@@ -5,3 +5,4 @@
 namespaces:
     HackEX\Autoloader: __DIR__/Autoloader
     HackEX\Config: __DIR__/Config
+    HackEX\Database: __DIR__/Database
