@@ -3,13 +3,15 @@ namespace HackEX\Database;
 
 class SQLite3Config implements DatabaseConfigInterface {
     private array $config;
+    private array $options = null;
 
-    public function __construct(\array $config) {
+    public function __construct(\array $config, ?\array $options = null) {
         if (empty($config['database'])) {
             throw new SQLite3Exception("The following is required: database.");
         }
 
         $this->config = $config;
+        $this->options = $options;
     }
 
     public function get(?\string $name = null): mixed {
@@ -34,6 +36,10 @@ class SQLite3Config implements DatabaseConfigInterface {
         }
 
         return $dsn;
+    }
+
+    public function getOptions(): array {
+        return $this->options;
     }
 }
 

@@ -9,7 +9,7 @@ class SQLite3Connection implements DatabaseConnectionInterface {
         $this->config = $config;
 
         try {
-            $this->pdo = new \PDO($this->config->dsn, null, null);
+            $this->pdo = new \PDO($this->config->dsn(), null, null, $this->config->getOptions());
         } catch (\PDOException $e) {
             throw new SQLite3ConnectionException($e->getMessage());
         }

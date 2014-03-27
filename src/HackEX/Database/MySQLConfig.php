@@ -3,13 +3,15 @@ namespace HackEX\Database;
 
 class MySQLConfig implements DatabaseConfigInterface {
     private array $config;
+    private array $options = null;
 
-    public function __construct(\array $config) {
+    public function __construct(\array $config, ?\array $options = null) {
         if (empty($config['host']) || empty($config['database']) || empty($config['username']) || empty($config['password'])) {
             throw new MySQLConfigException("The following is required: host, database, username, password.");
         }
 
         $this->config = $config;
+        $this->options = $options;
     }
 
     public function get(?\string $name = null): mixed {
@@ -32,6 +34,10 @@ class MySQLConfig implements DatabaseConfigInterface {
         }
 
         return $dsn;
+    }
+
+    public function getOptions(): array {
+        return $this->options;
     }
 }
 

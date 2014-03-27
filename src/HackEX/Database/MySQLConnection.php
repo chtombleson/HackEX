@@ -9,7 +9,7 @@ class MySQLConnection implements DatabaseConnectionInterface {
         $this->config = $config;
 
         try {
-            $this->pdo = new \PDO($this->config->dsn, $this->get('username'), $this->get('password'));
+            $this->pdo = new \PDO($this->config->dsn(), $this->config->get('username'), $this->config->get('password'), $this->config->getOptions());
         } catch (\PDOException $e) {
             throw new MySQLConnectionException($e->getMessage());
         }
